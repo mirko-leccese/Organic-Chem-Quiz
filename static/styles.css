@@ -1,0 +1,14 @@
+.container {
+    text-align: center;
+}
+.options {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.option {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: 1px solid #000;
+    cursor: pointer;
+}

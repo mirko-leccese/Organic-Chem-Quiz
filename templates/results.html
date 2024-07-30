@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Game Results</h1>
+        <p>You correctly translated {{ correct }} out of {{ count }} words.</p>
+        <form action="{{ url_for('reset') }}" method="get">
+            <button type="submit" class="option">Play Again</button>
+        </form>
+    </div>
+</body>
+</html>
