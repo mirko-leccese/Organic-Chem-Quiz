@@ -3,11 +3,11 @@
 This repository is a simple project demonstrating the use of the **Flask Framework** for web application development in Python. Specifically, we have created a quiz game focused on Organic Chemistry. The game involves asking the user to identify a molecule based on its molecular structure. 
 
 Here’s how the game works:
-- The user can click on the *Customize* link in the sidebar on the left to adjust the number of questions and the number of options displayed.
-- On the Homepage, the user should enter a username to log the results.
+- The user can click on the *Customize* link in the sidebar on the left to adjust the number of questions and the number of options displayed;
+- On the Homepage, the user should enter a username to log the results;
 - By clicking *Let's Play*, the game begins.
 
-After playing, results are logged into an SQL table, which can be viewed directly from the app by clicking on **Scoreboard**.
+After playing, results are logged into a SQL table, which can be viewed directly from the app by clicking on **Scoreboard**.
 
 ![GIF](https://github.com/mirko-leccese/Organic-Chem-Quiz/blob/main/game-show.gif)
 
