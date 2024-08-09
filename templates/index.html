@@ -6,14 +6,18 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="POST">
-        <label for="username">Enter your username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-        <input type="submit" value="Login">
-    </form>
-    <br>
-    <!-- Add a link to the scoreboard -->
-    <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
+    <div class="sidebar">
+        <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
+    </div>
+
+    <div class="main-content">
+        <h2>Login</h2>
+        <form method="POST">
+            <label for="username">Enter your username:</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
 </body>
 </html>
+

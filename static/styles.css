@@ -1,12 +1,65 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    width: 120px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    padding-top: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+.sidebar a:hover {
+    color: #83e8fa; /* Highlight color on hover */
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 200px;
+    padding: 40px;
+    width: calc(100% - 200px);
+    text-align: center;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* Container for Forms and Buttons */
 .container {
     text-align: center;
     margin-top: 50px;
 }
 
+/* Options Styling */
 .options {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Add some space between the buttons */
+    gap: 10px;
     margin-top: 20px;
 }
 
@@ -15,9 +68,79 @@
     border: 1px solid #000;
     cursor: pointer;
     background-color: #f0f0f0; /* Add a background color for better visibility */
+    color: #000;
 }
 
 .option:hover {
-    background-color: #e0e0e0; /* Slight hover effect */
+    background-color: #e0e0e0;
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 
+/* Scoreboard Table Styling */
+table {
+    width: 80%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #333;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Button Styling */
+button, input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    color: #555;
+}
+
+.back-to-login {
+    color: blue;
+    font-weight: bold;
+}
+
+/* Container for the Back to Login Link */
+.back-to-login-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
