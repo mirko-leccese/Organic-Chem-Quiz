@@ -8,12 +8,13 @@
 <body>
     <div class="container">
         <div class="sidebar">
+            <a href="{{ url_for('login') }}">Home</a>
             <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
             <a href="{{ url_for('customize') }}">Customize</a>
         </div>
 
         <div class="play-box">
-            <h1>Game Results</h1>
+            <h2 class="small-header">Game Results</h2>
             <p>You correctly identified {{ correct }} molecules out of {{ count }} displayed structures.</p>
             <div class="options">
                 <form action="{{ url_for('reset') }}" method="get">

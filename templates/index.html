@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Index</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <header class="fancy-header">
+        <h1>
+            Organic Molecules Quiz!!
+        </h1>
+    </header>
     <div class="container">
         <div class="sidebar">
-            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('login') }}">Home</a>
             <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
             <a href="{{ url_for('customize') }}">Customize</a>
         </div>
-
         <div class="main-box">
-            <h2>Insert your name to play!</h2>
+            <h2 class="small-header">Insert your name to play!</h2>
             <form method="POST" class="login-form">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>

@@ -8,14 +8,14 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('login') }}">Home</a>
             <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
             <a href="{{ url_for('customize') }}">Customize</a>
         </div>
 
         <div class="main-box">
             <a href="{{ url_for('login') }}" class="back-to-login">Back to Login</a>
-            <h2>Scoreboard</h2>
+            <h2 class="small-header">Scoreboard</h2>
             <table class="table">
                 <thead>
                     <tr>

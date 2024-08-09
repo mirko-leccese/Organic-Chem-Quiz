@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customize</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <a href="{{ url_for('login') }}">Home</a>
+            <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
+            <a href="{{ url_for('customize') }}">Customize</a>
+        </div>
+
+        <div class="main-box">
+            <a href="{{ url_for('login') }}" class="back-to-login">Back to Login</a>
+            <h2 class="small-header">Customize Settings</h2>
+            <form method="POST" class="customize-form">
+                <label for="num_questions">Number of Questions:</label>
+                <input type="number" id="num_questions" name="num_questions" required>
+                <label for="num_options">Number of Options:</label>
+                <input type="number" id="num_options" name="num_options" required>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
