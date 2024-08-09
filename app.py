@@ -53,7 +53,9 @@ def playgame():
     random_molecule = np.random.choice(df_orgmol["IUPAC"])
 
     # Prepare the options (correct one + random incorrect ones)
-    random_options = list(np.random.choice(df_orgmol[df_orgmol["IUPAC"]!=random_molecule]["IUPAC"], 3))
+    num_options = session.get("num_options", 4) - 1
+
+    random_options = list(np.random.choice(df_orgmol[df_orgmol["IUPAC"]!=random_molecule]["IUPAC"], num_options))
     options = random_options + [random_molecule]
 
     random.shuffle(options)
@@ -74,7 +76,10 @@ def check_answer():
     if selected_molecule == correct_answer:
         session['correct'] = session.get('correct', 0) + 1
 
-    if session['count'] >= 10:
+    # setting number of questions
+    num_questions = session.get("num_questions", 10)
+
+    if session['count'] >= num_questions:
         return redirect(url_for('results'))
 
     return redirect(url_for('playgame'))
@@ -83,11 +88,12 @@ def check_answer():
 def results():
     correct = session.get('correct', 0)
     count = session.get('count', 0)
+    ratio = round(correct/count*100, 2)
     playdate = datetime.now()
     connection = get_db_connection()
 
     # Insert results into results table
-    connection.execute("INSERT INTO results (userid, playdate, result) VALUES (?,?,?)", (session["user_id"],playdate,correct))
+    connection.execute("INSERT INTO results (userid, playdate, correct, questions, ratio) VALUES (?,?,?,?,?)", (session["user_id"],playdate,correct, count, ratio))
     connection.commit()
     connection.close()
 
@@ -108,15 +114,27 @@ def logout():
 def scoreboard():
     connection = get_db_connection()
     results = connection.execute("""
-        SELECT users.username, results.playdate, results.result 
+        SELECT users.username, results.playdate, results.correct, results.questions, results.ratio 
         FROM results 
         JOIN users ON results.userid = users.userid 
-        ORDER BY results.result DESC
+        ORDER BY results.ratio DESC
     """).fetchall()
     connection.close()
     
     return render_template('scoreboard.html', results=results)
 
+@app.route('/customize', methods=['GET', 'POST'])
+def customize():
+    if request.method == 'POST':
+        num_questions = request.form['num_questions']
+        num_options = request.form['num_options']
+
+        session["num_questions"] = int(num_questions)
+        session["num_options"] = int(num_options)
+
+        return redirect(url_for('login'))
+        
+    return render_template('customize.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

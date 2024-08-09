@@ -17,6 +17,8 @@
                         <th>Username</th>
                         <th>Play Date</th>
                         <th>Correct Answers</th>
+                        <th>Num Questions</th>
+                        <th>Ratio %</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +26,9 @@
                     <tr>
                         <td>{{ result['username'] }}</td>
                         <td>{{ result['playdate'] }}</td>
-                        <td>{{ result['result'] }}</td>
+                        <td>{{ result['correct'] }}</td>
+                        <td>{{ result['questions'] }}</td>
+                        <td>{{ result['ratio'] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
