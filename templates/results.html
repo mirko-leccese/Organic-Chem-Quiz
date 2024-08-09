@@ -9,9 +9,14 @@
     <div class="container">
         <h1>Game Results</h1>
         <p>You correctly translated {{ correct }} out of {{ count }} words.</p>
-        <form action="{{ url_for('reset') }}" method="get">
-            <button type="submit" class="option">Play Again</button>
-        </form>
+        <div class="options">
+            <form action="{{ url_for('reset') }}" method="get">
+                <button type="submit" class="option">Play Again</button>
+            </form>
+            <form action="{{ url_for('logout') }}" method="get">
+                <button type="submit" class="option">Log Out</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

@@ -2,23 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Organic Molecule Quiz</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>Organic Molecule Quiz</h1>
-        <p>What is the molecule?: 
-        <img src="{{ molecule_url }}" alt="Molecule Image" style="width: 150px; height: auto;">
-        <form action="{{ url_for('check_answer') }}" method="post">
-            <input type="hidden" name="question_molecule" value="{{ question_molecule }}">
-            <input type="hidden" name="correct_answer" value="{{ correct_answer }}">
-            <div class="options">
-                {% for option in options %}
-                <button type="submit" name="selected_word" value="{{ option }}" class="option">{{ option }}</button>
-                {% endfor %}
-            </div>
-        </form>
-    </div>
+    <h2>Login</h2>
+    <form method="POST">
+        <label for="username">Enter your username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <br>
+    <!-- Add a link to the scoreboard -->
+    <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
 </body>
 </html>

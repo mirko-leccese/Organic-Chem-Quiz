@@ -1,14 +1,23 @@
 .container {
     text-align: center;
+    margin-top: 50px;
 }
+
 .options {
     display: flex;
     justify-content: center;
+    gap: 10px; /* Add some space between the buttons */
     margin-top: 20px;
 }
+
 .option {
-    margin: 0 10px;
     padding: 10px 20px;
     border: 1px solid #000;
     cursor: pointer;
+    background-color: #f0f0f0; /* Add a background color for better visibility */
 }
+
+.option:hover {
+    background-color: #e0e0e0; /* Slight hover effect */
+}
+
