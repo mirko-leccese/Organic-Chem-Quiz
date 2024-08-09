@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS results (
     userid INTEGER,
-    playdate DATETIME,
+    playdate TEXT NOT NULL,
     correct INTEGER,
     questions INTEGER,
     ratio FLOAT

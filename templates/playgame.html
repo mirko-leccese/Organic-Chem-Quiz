@@ -2,23 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Organic Molecule Quiz</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Organic Molecule Quiz</h1>
-        <p>What is the molecule?:<br>
-        <img src="{{ molecule_url }}" alt="Molecule Image" style="width: 200px; height: auto;">
-        <form action="{{ url_for('check_answer') }}" method="post">
-            <input type="hidden" name="question_molecule" value="{{ question_molecule }}">
-            <input type="hidden" name="correct_answer" value="{{ correct_answer }}">
-            <div class="options">
-                {% for option in options %}
-                <button type="submit" name="selected_molecule" value="{{ option }}" class="option">{{ option }}</button>
-                {% endfor %}
-            </div>
-        </form>
+        <div class="sidebar">
+            <a href="{{ url_for('login') }}">Home</a>
+            <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
+            <a href="{{ url_for('customize') }}">Customize</a>
+        </div>
+
+        <div class="play-box">
+            <p class="question-style">What is the name of the molecule?</p>
+            <img src="{{ molecule_url }}" alt="Molecule Image" class="molecule-image">
+            <form action="{{ url_for('check_answer') }}" method="post" class="options-form">
+                <input type="hidden" name="question_molecule" value="{{ question_molecule }}">
+                <input type="hidden" name="correct_answer" value="{{ correct_answer }}">
+                <div class="options">
+                    {% for option in options %}
+                    <button type="submit" name="selected_molecule" value="{{ option }}" class="option">{{ option }}</button>
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
+
+

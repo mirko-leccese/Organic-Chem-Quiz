@@ -1,146 +1,279 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
     color: #333;
     margin: 0;
     padding: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    position: relative; /* Needed for the ::before pseudo-element */
+    z-index: 0; /* Ensure proper stacking context */
+}
+
+/* Adding a semi-transparent overlay on top of the background image */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/backimage2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5; /* Adjust the opacity (0.1 to 1) */
+    z-index: -1; /* Ensure it's behind the content */
+}
+
+/* Fancy Header */
+.fancy-header {
+    width: 100%; /* Make header full-width */
+    text-align: center;
+    padding: 0px;
+    box-sizing: border-box;
+    z-index: 1000; /* Ensure it appears above other elements */
+    position: fixed; /* Fix it to the top of the page */
+    top: 0;
+    left: 100px;
+}
+
+.fancy-header h1 {
+    font-family: 'Comic Sans MS', cursive; /* Cartoon-style font */
+    font-size: 60px;
+    font-weight: 700; /* Adjust weight as needed */
+    margin: 0;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #2615be, #fa4336); /* Gradient from blue to red */
+    -webkit-background-clip: text; /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Make text fill color transparent to show the gradient */
+    background-clip: text; /* For non-webkit browsers */
+}
+
+.small-header {
+    color: #2c3e50
+}
+
+/* Container for Layout */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Sidebar Navigation */
 .sidebar {
-    width: 120px;
-    background-color: #333;
+    width: 100px; /* Reduced width */
+    background-color: #2c3e50;
     color: white;
     height: 100vh;
-    padding-top: 10px;
+    padding: 20px;
     position: fixed;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .sidebar a {
-    color: white;
+    color: #ecf0f1;
     text-decoration: none;
-    margin: 10px 0;
-    font-size: 16px;
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .sidebar a:hover {
-    color: #83e8fa; /* Highlight color on hover */
+    color: #1abc9c;
 }
 
-/* Main Content */
-.main-content {
+/* Main Box, used everywhere except for Play Game containers */
+.main-box {
+    margin-left: 200px; /* Adjusted for reduced sidebar width */
+    padding: 40px;
+    width: calc(100% - 200px);
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 2px solid #2c3e50; /* 3px wide solid border with a color */
+}
+
+/* Definition of containers during play. */
+.play-box {
     margin-left: 200px;
     padding: 40px;
     width: calc(100% - 200px);
-    text-align: center;
-}
-
-h1, h2 {
-    color: #333;
-}
-
-/* Container for Forms and Buttons */
-.container {
-    text-align: center;
-    margin-top: 50px;
-}
-
-/* Options Styling */
-.options {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.option {
-    padding: 10px 20px;
-    border: 1px solid #000;
-    cursor: pointer;
-    background-color: #f0f0f0; /* Add a background color for better visibility */
-    color: #000;
-}
-
-.option:hover {
-    background-color: #e0e0e0;
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-
-/* Scoreboard Table Styling */
-table {
-    width: 80%;
-    margin: 40px auto;
-    border-collapse: collapse;
-    background-color: #fff;
+    align-items: center;
+    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    overflow: hidden;
+    text-align: center; /* Center-align text */
+    border: 2px solid #2c3e50; /* 3px wide solid border with a color */
 }
 
-table th, table td {
-    padding: 12px 20px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+/* Customize Box */
+.customize-box {
+    max-width: 500px;
+    margin-top: 30px; /* Positioned at the top */
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-table th {
-    background-color: #333;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 14px;
+.customize-form label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
 }
 
-table tr:hover {
-    background-color: #f1f1f1;
+.customize-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
 }
 
-table tr:last-child td {
-    border-bottom: none;
-}
-
-/* Button Styling */
-button, input[type="submit"] {
+.customize-form button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #333;
+    background-color: #3498db;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover, input[type="submit"]:hover {
-    background-color: #555;
+.customize-form button:hover {
+    background-color: #2980b9;
     transform: translateY(-2px);
 }
 
-a {
-    text-decoration: none;
-    color: #333;
+/* Login Form */
+.login-form {
+    width: 200px;
 }
 
-a:hover {
-    color: #555;
+.login-form label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
 }
 
+.login-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.login-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-form button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Molecule Image Styling */
+.molecule-image {
+    max-width: 100%; /* Ensures image responsiveness */
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Options Styling */
+.options-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to handle overflow */
+    gap: 10px;
+    justify-content: center; /* Centers buttons horizontally */
+}
+
+.option {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.option:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Question style */
+.question-style {
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: 150;
+}
+
+/* Scoreboard Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-transform: uppercase;
+}
+
+.table tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Back to Login Styling */
 .back-to-login {
-    color: blue;
-    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #3498db;
+    font-weight: 600;
 }
 
-/* Container for the Back to Login Link */
-.back-to-login-container {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+.back-to-login:hover {
+    text-decoration: underline;
 }
+
+
+

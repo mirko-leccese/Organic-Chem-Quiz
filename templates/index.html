@@ -2,23 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Index</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="sidebar">
-        <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
-        <a href="{{ url_for('customize') }}">Customize</a>
-    </div>
-
-    <div class="main-content">
-        <h2>Login</h2>
-        <form method="POST">
-            <label for="username">Enter your username:</label><br>
-            <input type="text" id="username" name="username" required><br><br>
-            <input type="submit" value="Login">
-        </form>
+    <header class="fancy-header">
+        <h1>
+            Organic Molecules Quiz!!
+        </h1>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <a href="{{ url_for('login') }}">Home</a>
+            <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
+            <a href="{{ url_for('customize') }}">Customize</a>
+        </div>
+        <div class="main-box">
+            <h2 class="small-header">Insert your name to play!</h2>
+            <form method="POST" class="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <button type="submit">Let's Play!</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
+
+
 

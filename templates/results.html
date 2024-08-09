@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Results</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Game Results</h1>
-        <p>You correctly translated {{ correct }} out of {{ count }} words.</p>
-        <div class="options">
-            <form action="{{ url_for('reset') }}" method="get">
-                <button type="submit" class="option">Play Again</button>
-            </form>
-            <form action="{{ url_for('logout') }}" method="get">
-                <button type="submit" class="option">Log Out</button>
-            </form>
+        <div class="sidebar">
+            <a href="{{ url_for('login') }}">Home</a>
+            <a href="{{ url_for('scoreboard') }}">Scoreboard</a>
+            <a href="{{ url_for('customize') }}">Customize</a>
+        </div>
+
+        <div class="play-box">
+            <h2 class="small-header">Game Results</h2>
+            <p>You correctly identified {{ correct }} molecules out of {{ count }} displayed structures.</p>
+            <div class="options">
+                <form action="{{ url_for('reset') }}" method="get">
+                    <button type="submit" class="option">Play Again</button>
+                </form>
+                <form action="{{ url_for('logout') }}" method="get">
+                    <button type="submit" class="option">Log Out</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
